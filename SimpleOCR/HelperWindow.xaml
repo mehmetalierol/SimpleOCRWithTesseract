@@ -1,0 +1,32 @@
+﻿<Controls:MetroWindow  x:Class="SimpleOCR.HelperWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:SimpleOCR"
+        mc:Ignorable="d"
+        WindowStartupLocation="Manual"               
+        WindowStyle="None"
+        ShowCloseButton="False" ShowMaxRestoreButton="False" ShowMinButton="True"
+        Topmost="True"
+        ShowTitleBar="False"
+        xmlns:viewModel="clr-namespace:SimpleOCR.Core"
+        DataContext="{Binding HelperWindowVM, Source={StaticResource ViewModelLocator}}"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        Title="" Height="70.667" Width="223.667" Uid="HelperWindow">
+    <Window.Background>
+        <SolidColorBrush Color="White"></SolidColorBrush>
+    </Window.Background>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <cmd:EventToCommand Command="{Binding Mode=OneWay, Path=WindowLoadCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Button Content="Yakala (CTRL+T)" FontSize="25" HorizontalContentAlignment="Left" 
+                Width="217" Height="64" Padding="5,0,0,0" VerticalAlignment="Stretch" 
+                Command="{Binding BtnCatchCommand}" HorizontalAlignment="Stretch" Margin="0,0,0,0"/>
+    </Grid>
+</Controls:MetroWindow>

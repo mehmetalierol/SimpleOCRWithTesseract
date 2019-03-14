@@ -1,0 +1,44 @@
+﻿<Controls:MetroWindow x:Class="SimpleOCR.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:SimpleOCR"
+        mc:Ignorable="d"
+        ResizeMode="CanResizeWithGrip" AllowsTransparency="True"
+        BorderBrush="Cyan"
+        BorderThickness="5"
+        WindowStartupLocation="CenterScreen"
+        Topmost="False"
+        WindowStyle="None"
+        ShowTitleBar="False"
+        ShowCloseButton="False" ShowMaxRestoreButton="False" ShowMinButton="False"
+        xmlns:viewModel="clr-namespace:SimpleOCR.Core"
+        DataContext="{Binding MainWindowVM, Source={StaticResource ViewModelLocator}}"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        Title="" Height="450" Width="800" Uid="SelectionWindow">
+    <Window.Background>
+        <SolidColorBrush Opacity="0.01" Color="White"></SolidColorBrush>
+    </Window.Background>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseDown">
+            <cmd:EventToCommand Command="{Binding Mode=OneWay, Path=WindowMouseDownCommand}" PassEventArgsToCommand="True"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Loaded">
+            <cmd:EventToCommand Command="{Binding Mode=OneWay, Path=WindowLoadCommand}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="KeyDown">
+            <cmd:EventToCommand Command="{Binding Mode=OneWay, Path=WindowKeyDownCommand}" PassEventArgsToCommand="True"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="781*"/>
+            <ColumnDefinition Width="9*"/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="MyImage" HorizontalAlignment="Left" Height="147" Margin="32,56,0,0" VerticalAlignment="Top" Width="325"/>
+
+    </Grid>
+</Controls:MetroWindow>
